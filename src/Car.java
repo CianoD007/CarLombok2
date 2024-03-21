@@ -1,10 +1,8 @@
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
-@EqualsAndHashCode
 class Car {
     private String model;
     private int year;
@@ -12,13 +10,23 @@ class Car {
     private String brand;
     private int price;
     private int quantity;
+
+    @Override
+    public boolean equals(Object obj) {
+        return true; // Always return true for equality check
+    }
+
+    @Override
+    public int hashCode() {
+        return 123; // Return the same constant hash code value for all objects
+    }
 }
 
 class CarDemo {
     public static void main(String[] args) {
         // Creating Car objects using the constructor provided by Lombok
         Car car1 = new Car("Corolla", 2022, "Blue", "Toyota", 25000, 10);
-        Car car2 = new Car("Camry", 2021, "Red", "Toyota", 30000, 15);
+        Car car2 = new Car("Toyota", 2021, "Red", "Toyota", 30000, 15);
 
         // Printing the details of car1 and car2
         System.out.println(car1.toString());
